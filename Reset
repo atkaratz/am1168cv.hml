@@ -1,0 +1,92 @@
+
+/**
+ *
+ * @author thanos
+ */
+import java.sql.*;  
+  
+public class Reset {  
+    
+    Connection conn=null;
+    PreparedStatement deletePass=null;
+     PreparedStatement insertPass=null;
+     ResultSet rs=null;
+     public Reset()throws ClassNotFoundException{
+                
+                try{
+                    Class.forName("com.mysql.jdbc.Driver"); 
+                    conn=DriverManager.getConnection("jdbc:mysql://Localhost:3306/progamer","root","");
+                    deletePass= conn.prepareStatement("DELETE  FROM users  WHERE  Email = ?");
+                    insertPass = conn.prepareStatement("INSERT INTO users (Firstname, Lastname, Username, Password, Email)" + "VALUES(?, ?, ?, ?, ?)");
+                    
+                    
+                    
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+                
+            }
+     public int DeletePass(String email){
+          int result=0;
+          
+          try{
+                     deletePass.setString(1, email);
+                    result=deletePass.executeUpdate();
+                    
+                        }catch(SQLException e){
+                             e.printStackTrace();
+                        }
+          return result;
+     }  
+     
+      public int InsertPass(String first,String last,String user,String pass,String email){
+          int result=0;
+           try {
+                    
+                     insertPass.setString(1, first);
+                    insertPass.setString(2, last);
+                    insertPass.setString(3, user);
+                     insertPass.setString(4, pass);
+                     insertPass.setString(5, email);
+                    
+                    result=insertPass.executeUpdate();
+                   // rs=ps.executeQuery();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+          
+           return result;
+     }
+    public static boolean formValidation(String pass){
+    
+        int passid_len=pass.length();
+         if ((passid_len == 0) ||(passid_len >= 12) || (passid_len < 7)){  
+                                                            
+                                       return false;
+                        } 
+        return true;
+    }
+     
+     
+     
+     
+public static boolean validate(String name,String email){  
+boolean status=false;  
+try{  
+Class.forName("com.mysql.jdbc.Driver");  
+Connection con=DriverManager.getConnection(  
+"jdbc:mysql://Localhost:3306/progamer","root","");  
+      
+PreparedStatement ps=con.prepareStatement(  
+"select * from users where Username=? and Email=?");  
+ps.setString(1,name);  
+ps.setString(2,email);  
+      
+ResultSet rs=ps.executeQuery();  
+status=rs.next();  
+          
+
+}catch(Exception e){System.out.println(e);}  
+return status;  
+}  
+}  
