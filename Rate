@@ -1,0 +1,64 @@
+/*
+
+/**
+ *
+ * @author thanos
+ */
+import java.sql.*;  
+  
+public class Rate {  
+    
+    Connection conn=null;
+            PreparedStatement rate=null;
+            ResultSet rs=null;
+            public  Rate() throws ClassNotFoundException{
+                
+                try{
+                    Class.forName("com.mysql.jdbc.Driver"); 
+                    conn=DriverManager.getConnection("jdbc:mysql://Localhost:3306/progamer","root","");
+                    
+                    //rate = conn.prepareStatement("UPDATE games SET Rating=Rating +'" + star+ "' WHERE Gametitle='"+ game+"'" );
+                    
+                    
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+               
+            }
+ public int SetRate(Integer star,String game){
+      int result=0;
+      
+      try {
+                    rate = conn.prepareStatement("UPDATE games SET Rating=Rating +'" + star+ "' WHERE Gametitle='"+ game+"'" );
+                    
+               
+                    result=rate.executeUpdate();
+                   // rs=ps.executeQuery();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+      
+      return result; 
+ }
+    
+    
+public static boolean validate(String name){  
+boolean status=false;  
+try{  
+Class.forName("com.mysql.jdbc.Driver");  
+Connection con=DriverManager.getConnection(  
+"jdbc:mysql://Localhost:3306/progamer","root","");  
+      
+PreparedStatement ps=con.prepareStatement(  
+"select * from games where Gametitle=?");  
+ps.setString(1,name);  
+  
+      
+ResultSet rs=ps.executeQuery();  
+status=rs.next();  
+          
+
+}catch(Exception e){System.out.println(e);}  
+return status;  
+}  
+}  
