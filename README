@@ -1,0 +1,25 @@
+
+ΜΙΑ ΠΕΡΙΓΡΑΦΗ ΤΗΣ ΕΓΑΡΜΟΓΗΣ: 
+
+      ΟΙ ΧΡΗΣΤΕΣ ΜΠΟΡΟΥΝ ΝΑ ΚΑΝΟΥΝ LOG IN ΑΝ ΔΕΝ ΕΧΟΥΝ ΛΟΓΑΡΙΑΣΜΑ REGISTER  ΚΑΙ ΑΦΟΥ ΜΠΟΥΝ ΝΑ ΕΙΣΑΓΟΥΝ 
+      ΚΑΠΟΙΟ ΠΑΙΧΝΙΔΙ ΚΑΙ ΝΑ ΤΟ ΒΑΘΜΟΛΟΓΗΣΟΥΝ ΣΤΗΝ ΕΠΙΛΟΓΗ ENTER GAME  ΚΑΙ ΜΕ ΤΗΝ ΕΠΙΛΟΓΗ TOP GAME 
+      ΜΠΟΡΟΥΝ ΝΑ ΔΟΥΝ ΤΗΝ ΒΑΘΜΟΛΟΓΙΑ ΤΩΝ ΠΑΙΧΝΙΔΙΩΝ.
+      
+      
+ΤΙ ΧΡΗΣΙΜΟΠΟΙΗΘΗΚΕ ΓΙΑ ΝΑ ΥΛΟΠΟΙΗΘΕΙ Η ΕΦΑΡΜΟΓΗ:
+
+     ΓΙΑ ΤΗΝ ΕΦΑΡΜΟΓΗ ΧΡΗΣΙΜΟΠΟΙΗΘΗΚΕ HTML,JSP,JAVASCRIPT,CSS KAI SERVLETS
+     
+     ΚΑΠΟΙΑ ΠΡΑΓΜΑΤΑ ΤΑ ΒΡΗΚΑ ΑΠΟ ΤΟ ΙΝΤΕΡΝΕΤ:
+     
+        ΤΟ BACKGROUND TO ΕΦΤΙΑΞΑ ΕΓΩ ΜΕ PHOTOSHOP, ΒΟΗΘΗΘΗΚΑ ΑΠΟ ΤΟ ANIMATION FORM SWITCHING ΠΙΟ 
+        ΣΥΓΚΕΚΡΙΜΕΝΑ:  file:///C:/Users/thanos/Desktop/AnimatedFormSwitching/index.html
+                       file:///C:/Users/thanos/Desktop/AnimatedFormSwitching/register.html
+        
+        ΚΑΙ ΧΡΗΣΙΜΟΠΟΙΗΣΑ ΤΩΝ ΚΩΔΙΚΑ ΜΕ ΚΑΠΟΙΕΣ ΤΡΟΠΟΠΟΙΗΣΕΙΣ ΠΟΥ ΕΚΑΝΑ ΚΑΙ ΠΕΡΑ ΤΟΥ LOGIN ΚΑΙ REGISTER
+        ΕΠΙΣΗΣ ΓΙΑ ΤΟ RATING ΧΡΗΣΙΜΟΠΟΙΗΣΑ ΤΟ simple-5-star-rating-system-with-css-and-html-radios
+        ΠΙΟ ΣΥΦΚΕΚΡΙΜΕΝΑ: file:///C:/Users/thanos/Desktop/simple-5-star-rating-system-with-css-and-html-radios/simple-5-star-rating-system-with-css-and-html-radios/index.html
+        ΠΡΟΣΑΡΜΟΖΟΝΤΑΣ ΤΟ ΓΙΑ ΤΗΝ ΕΦΑΡΜΟΓΗ
+        
+        
+        
