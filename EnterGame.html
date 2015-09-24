@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title>Progamers</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
+        <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"></link>
+		<script src="js/cufon-yui.js" type="text/javascript"></script>
+		<script src="js/ChunkFive_400.font.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			Cufon.replace('h1',{ textShadow: '1px 1px #fff'});
+			Cufon.replace('h2',{ textShadow: '1px 1px #fff'});
+			Cufon.replace('h3',{ textShadow: '1px 1px #000'});
+			Cufon.replace('.back');
+		</script>
+    </head>
+    <style>
+        body{
+            background-image: url("MainPage.png");
+             -webkit-background-size: cover;
+              -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                height: 100%;
+                margin: 0;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+        }
+    </style>
+    <body>
+        <style>
+            div.centered {
+           position: fixed;
+         top: 50%;
+         left: 50%;
+        /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+                }
+                
+                 div.center {
+                   
+                    // top: 50%;
+                    left: 40%;
+                   min-width: 450px;
+                    right: 35%;
+                    top: 10%;
+                   position: fixed;
+                
+                   
+                }
+            nav{
+               
+                
+                height:42px;
+                background-color:#222;
+            } 
+            nav ul{
+                list-style: none;
+            }
+            nav ul li a{
+                left: 50%;
+                float: left;
+                text-decoration: none;
+                color:#fff;
+                padding: 0px 40px;
+                text-align: center;
+                line-height: 42px;
+                height: 42px;
+            }
+            nav ul li a:hover{
+                background-color: #444;
+            }
+         
+            
+                       div.stars {
+
+        width: 270px;
+
+        display: inline-block;
+
+        } 
+
+input.star { display: none; }
+
+label.star {
+
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+
+}
+
+input.star:checked ~ label.star:before {
+
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+
+}
+
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+
+  content: '\f006';
+  font-family: FontAwesome;
+
+}
+            
+            
+                </style>
+                 <div class="center">
+        <nav>
+             <ul>   
+             <li><a href="EnterGame.html">Enter Game</a></li>
+              <li><a href="Top.jsp">Top Games</a></li>
+               <li><a href="index.html">Log Out</a></li>
+             </ul>
+    </nav>    
+       </div>    
+                <div class="centered">
+		<div class="wrapper">
+			
+			<div class="content">
+				<div id="form_wrapper" class="form_wrapper">
+					
+				
+					<form class="login active" name="myForm" action="servlet5" method="POST">
+						<h3>Rate</h3>
+						<div>
+							<label>Game Title:</label>
+							<input type="text" name="game"/>
+							<span class="error">This is an error</span>
+						</div>
+						<div>
+							<label>Rating: </label> 
+                                                        <div class="stars">
+
+                                                         
+
+                                                                <input class="star star-5" id="star-5" type="radio" name="star5"/>
+                                                                 <label class="star star-5" for="star-5"></label>
+                                                                  <input class="star star-4" id="star-4" type="radio" name="star4"/>
+                                                                <label class="star star-4" for="star-4"></label>
+                                                                <input class="star star-3" id="star-3" type="radio" name="star3"/>
+                                                                 <label class="star star-3" for="star-3"></label>
+                                                                 <input class="star star-2" id="star-2" type="radio" name="star2"/>
+                                                                 <label class="star star-2" for="star-2"></label>
+                                                                <input class="star star-1" id="star-1" type="radio" name="star1"/>
+                                                                <label class="star star-1" for="star-1"></label> 
+
+                                                        
+
+                                                            </div>
+                                                       
+							
+							<span class="error">This is an error</span>
+						</div>
+						<div class="bottom">
+							
+							<input type="submit" value="Rate"></input>
+							
+							<div class="clear"></div>
+						</div>
+					</form>
+					
+				</div>
+				<div class="clear"></div>
+		
+                        </div>
+
+		<!-- The JavaScript -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+					//the form wrapper (includes all forms)
+				var $form_wrapper	= $('#form_wrapper'),
+					//the current form is the one with class active
+					$currentForm	= $form_wrapper.children('form.active'),
+					//the change form links
+					$linkform		= $form_wrapper.find('.linkform');
+						
+				//get width and height of each form and store them for later						
+				$form_wrapper.children('form').each(function(i){
+					var $theForm	= $(this);
+					//solve the inline display none problem when using fadeIn fadeOut
+					if(!$theForm.hasClass('active'))
+						$theForm.hide();
+					$theForm.data({
+						width	: $theForm.width(),
+						height	: $theForm.height()
+					});
+				});
+				
+				//set width and height of wrapper (same of current form)
+				setWrapperWidth();
+				
+				/*
+				clicking a link (change form event) in the form
+				makes the current form hide.
+				The wrapper animates its width and height to the 
+				width and height of the new current form.
+				After the animation, the new form is shown
+				*/
+				$linkform.bind('click',function(e){
+					var $link	= $(this);
+					var target	= $link.attr('rel');
+					$currentForm.fadeOut(400,function(){
+						//remove class active from current form
+						$currentForm.removeClass('active');
+						//new current form
+						$currentForm= $form_wrapper.children('form.'+target);
+						//animate the wrapper
+						$form_wrapper.stop()
+									 .animate({
+										width	: $currentForm.data('width') + 'px',
+										height	: $currentForm.data('height') + 'px'
+									 },500,function(){
+										//new form gets class active
+										$currentForm.addClass('active');
+										//show the new form
+										$currentForm.fadeIn(400);
+									 });
+					});
+					e.preventDefault();
+				});
+				
+				function setWrapperWidth(){
+					$form_wrapper.css({
+						width	: $currentForm.data('width') + 'px',
+						height	: $currentForm.data('height') + 'px'
+					});
+				}
+				
+				/*
+				for the demo we disabled the submit buttons
+				if you submit the form, you need to check the 
+				which form was submited, and give the class active 
+				to the form you want to show
+				*/
+				//$form_wrapper.find('input[type="submit"]')
+							// .click(function(e){
+								//e.preventDefault();
+							// });	
+			});
+                        
+                        
+        </script>
+    </body>
+</html>
