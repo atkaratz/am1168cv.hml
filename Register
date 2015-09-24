@@ -1,0 +1,102 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author thanos
+ */
+import static java.awt.PageAttributes.MediaType.A;
+import java.sql.*;  
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static jdk.nashorn.internal.objects.NativeJava.type;
+
+public class RegisterDao {
+    
+    Connection conn=null;
+            PreparedStatement insertUser=null;
+            ResultSet rs=null;
+            public RegisterDao() throws ClassNotFoundException{
+                
+                try{
+                    Class.forName("com.mysql.jdbc.Driver"); 
+                    conn=DriverManager.getConnection("jdbc:mysql://Localhost:3306/progamer","root","");
+                    
+                    insertUser = conn.prepareStatement("INSERT INTO users (Firstname, Lastname, Username, Password, Email)" + "VALUES(?, ?, ?, ?, ?)");
+                    
+                    
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+                
+            }
+    public int setUsers (String first,String last,String user,String pass,String email){
+                int result=0;
+                try {
+                    
+                    insertUser.setString(1, first);
+                    insertUser.setString(2, last);
+                    insertUser.setString(3, user);
+                     insertUser.setString(4, pass);
+                     insertUser.setString(5, email);
+                    result=insertUser.executeUpdate();
+                   // rs=ps.executeQuery();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+                
+                return result;
+            }
+    
+    public static boolean formValidation(String first,String last,String user,String pass,String email) {
+                        
+                        int fir=first.length();
+                       int la=last.length();
+                        int us=user.length();
+                       int passid_len=pass.length();
+                        int atpos=email.indexOf("@");
+
+                        int dotpos=email.lastIndexOf(".");
+
+                       
+                       
+                       if ((first == null) ||(first=="")){  
+                                 
+                                 return false;
+                       }
+                       
+                       if ((last == null) ||(last=="")){  
+                                           
+                             return false;
+                       } 
+                      
+                       
+                       if ((us == 0) ||(us >= 12) || (us < 7)){  
+                                                       
+                                  return false;
+                          } 
+                       
+                       if ((passid_len == 0) ||(passid_len >= 12) || (passid_len < 7)){  
+                                                            
+                                       return false;
+                        } 
+                       
+                       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length()){
+                                     return false;
+                        }
+                      
+                       if(LoginDao.validate(user, pass)){ 
+                                return false;
+                       }
+                       
+                     
+                   
+                     
+        return true; 
+    }
+  
+    
+}
