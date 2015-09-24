@@ -1,0 +1,65 @@
+import java.io.IOException;  
+import java.io.PrintWriter;  
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;  
+import javax.servlet.ServletException;  
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;  
+import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletResponse;  
+  
+ @WebServlet(name="FourthServlet", urlPatterns={"/servlet5"}) 
+public class FourthServlet extends HttpServlet {  
+public void doPost(HttpServletRequest request, HttpServletResponse response)  
+        throws ServletException, IOException {  
+  
+    response.setContentType("text/html");  
+    PrintWriter out = response.getWriter();  
+          
+    String game =request.getParameter("game");  
+    String st1= request.getParameter("star1");  
+    String st2= request.getParameter("star2"); 
+    String st3= request.getParameter("star3"); 
+    String st4= request.getParameter("star4"); 
+    String st5= request.getParameter("star5"); 
+    int rate=0;
+    
+    if(st1!=null){
+        rate=1;
+    }
+     if(st2!=null){
+        rate=2;
+    }
+     if(st3!=null){
+        rate=3;
+    }
+      if(st4!=null){
+        rate=4;
+    }
+       if(st5!=null){
+        rate=5;
+    }
+       
+        try {
+            if(Rate.validate(game)){  
+       
+                    Rate rt=new Rate();
+                    rate=rt.SetRate(rate, game);
+                    
+                     RequestDispatcher rd=request.getRequestDispatcher("EnterGame.html");  
+                     rd.forward(request,response);  
+        
+                    }  
+         else{  
+                    
+                    RequestDispatcher rd=request.getRequestDispatcher("InvalidGame.html");  
+                    rd.include(request,response);  
+            }  
+       } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FourthServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+    out.close();  
+    }  
+}  
+ 
